@@ -27,7 +27,6 @@ dependencies:
   intl: ^0.18.1
   fluttertoast: ^8.1.1
   shared_preferences: ^2.0.15
-  connectivity_plus: ^3.0.2
 
 dev_dependencies:
   flutter_test:

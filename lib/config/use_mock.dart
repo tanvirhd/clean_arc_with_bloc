@@ -1,0 +1,4 @@
+
+class UseMock{
+  const UseMock();
+}
