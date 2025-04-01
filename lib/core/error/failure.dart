@@ -1,4 +1,8 @@
 import 'dart:developer';
+import 'package:clean_arc_bloc/core/error/custom_dio_errors.dart';
+import 'package:clean_arc_bloc/core/model/basic_response.dart';
+import 'package:dio/dio.dart';
+
 
 abstract class Failure {
   final String? errorDescription;
@@ -6,15 +10,13 @@ abstract class Failure {
 
   const Failure({this.errorDescription, this.statusCode});
 
-  /*static Failure mapExceptionToFailure(Object error) {
+  static Failure mapExceptionToFailure(Object error) {
     log("error type = ${error.toString()}");
     Failure failure;
     if (error is CustomDioError) {
       if (error is NoInternetError) {
         failure = NoInternetFailure(errorDescription: error.err.message);
-      } else if (error is VpnConnectionError) {
-        failure = VpnConnectionFailure(errorDescription: error.err.message);
-      } else if (error is InvalidTokenError) {
+      }else if (error is InvalidTokenError) {
         failure = InvalidTokenFailure(errorDescription: error.err.message);
       } else if (error is DataParseError) {
         failure = DataParseFailure(
@@ -41,21 +43,19 @@ abstract class Failure {
                 : error.message);
       }
     } else {
-      failure = UnknownFailure(errorDescription: "${error.toString()}");
+      failure = UnknownFailure(errorDescription: error.toString());
     }
 
     return failure;
-  }*/
+  }
 }
 
 class NoInternetFailure extends Failure {
-  const NoInternetFailure({String? errorDescription})
-      : super(errorDescription: errorDescription);
+  const NoInternetFailure({super.errorDescription});
 }
 
 class VpnConnectionFailure extends Failure {
-  const VpnConnectionFailure({String? errorDescription})
-      : super(errorDescription: errorDescription);
+  const VpnConnectionFailure({super.errorDescription});
 }
 
 class InvalidTokenFailure extends Failure {
@@ -68,16 +68,13 @@ class TokenRefreshFailure extends Failure {
 }
 
 class DataParseFailure extends Failure {
-  const DataParseFailure({String? errorDescription})
-      : super(errorDescription: errorDescription);
+  const DataParseFailure({super.errorDescription});
 }
 
 class DioFailure extends Failure {
-  const DioFailure({String? errorDescription, String? statusCode})
-      : super(errorDescription: errorDescription, statusCode: statusCode);
+  const DioFailure({super.errorDescription, super.statusCode});
 }
 
 class UnknownFailure extends Failure {
-  const UnknownFailure({String? errorDescription})
-      : super(errorDescription: errorDescription);
+  const UnknownFailure({super.errorDescription});
 }
