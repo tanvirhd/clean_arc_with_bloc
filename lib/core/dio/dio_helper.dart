@@ -12,14 +12,20 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart' as getx;
 import 'package:get/get_utils/src/platform/platform.dart';
 
+String provideBaseUrl(){
+  final flavor = String.fromEnvironment(FLAVOR,defaultValue: "");
+  return flavor == "prod" ? BASE_URL_PRODUCTION : BASE_URL_UAT;
+}
+
 final dio = Dio(
     BaseOptions(
         connectTimeout: Duration(milliseconds: TIMEOUT_TIME),
         receiveTimeout: Duration(milliseconds: TIMEOUT_TIME),
-        baseUrl: BASE_URL_PRODUCTION,
+        baseUrl: provideBaseUrl(),
         responseType: ResponseType.plain
     )
 );
+
 
 class DioHelper {
 

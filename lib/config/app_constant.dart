@@ -2,6 +2,7 @@
 const TIMEOUT_TIME = 10000;
 const DEVICE_ANDROID = "Android";
 const DEVICE_IOS = "iOS";
+const FLAVOR = "FLAVOR";
 
 
 //platform

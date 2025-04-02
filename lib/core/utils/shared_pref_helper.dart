@@ -20,8 +20,7 @@ const String DEVICE_UUID = "DEVICE_UUID";
 
 //helper class
 class SharedPreferenceHelper {
-  static final SharedPreferenceHelper _instance =
-      SharedPreferenceHelper._internal();
+  static final SharedPreferenceHelper _instance = SharedPreferenceHelper._internal();
 
   late SharedPreferences _prefs;
 
@@ -68,8 +67,7 @@ class SharedPreferenceHelper {
   }
 
   Future<void> setStringAsEncrypt(String key, String value) async {
-    EncryptedSharedPreferences encryptedSharedPreferences =
-        EncryptedSharedPreferences(prefs: _prefs);
+    EncryptedSharedPreferences encryptedSharedPreferences = EncryptedSharedPreferences(prefs: _prefs);
     encryptedSharedPreferences.setString(key, value);
   }
 
